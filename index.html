@@ -131,6 +131,10 @@
   .pay-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:26px}
   .pay-now{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
   .pay-now b{font-size:18px;font-weight:800;color:var(--purple-2);font-family:var(--mono)}
+  .pay-meta{display:flex;align-items:center;gap:7px;margin:10px 0 0;font-size:12px;color:var(--dim);line-height:1.6}
+  .pay-meta svg{flex:none;opacity:.7}
+  .pay-meta.warn{color:#e8b86b;margin-top:6px}
+  .pay-meta.warn svg{opacity:.9}
   .pay-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
   .pm{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column}
   .pm-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
@@ -141,7 +145,7 @@
   .pm-head small{display:block;font-size:11.5px;color:var(--muted);font-weight:400}
   .qr{position:relative;width:100%;aspect-ratio:1;max-width:180px;margin:0 auto 12px;border-radius:12px;background:#0d1016;border:1px dashed #2c3240;display:grid;place-items:center;cursor:zoom-in;overflow:hidden;transition:border-color .18s,background .18s}
   .qr:hover{border-color:var(--purple);background:#10131a}
-  .qr img{width:100%;height:100%;object-fit:cover;border-radius:11px;background:#fff}
+  .qr img{width:100%;height:100%;object-fit:contain;border-radius:11px;background:#fff}
   .qr .ph{display:none;text-align:center;padding:14px;color:var(--dim);font-size:11.5px;line-height:1.7}
   .qr .ph svg{margin:0 auto 8px;display:block;opacity:.45}
   .qr .ph b{display:inline-block;word-break:break-all;color:var(--muted);font-weight:600}
@@ -349,6 +353,15 @@
           <span style="font-size:12.5px;color:var(--muted)">选好金额后，用下面的任一种方式付款</span>
         </div>
 
+        <p class="pay-meta">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4.5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          数据为人工核对，每日更新一次
+        </p>
+        <p class="pay-meta warn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7.5 3.2v5.4c0 4.3-3.1 8.2-7.5 9.4-4.4-1.2-7.5-5.1-7.5-9.4V6.2L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          超过 500 元的大额赞助，请走支付宝渠道
+        </p>
+
         <div class="pay-grid">
           <div class="pm">
             <div class="pm-head">
@@ -376,7 +389,7 @@
               <span class="pm-ico ali">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M7 15.5c2.5 1.2 5 1.2 7.2 0M12 3v7.5M8.5 7.5H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
-              <h4>支付宝<small>扫码或搜索账号转账</small></h4>
+              <h4>支付宝<small>扫码后输入金额</small></h4>
             </div>
             <div class="qr" data-qr="alipay" tabindex="0" role="button" aria-label="查看支付宝收款码">
               <img src="assets/alipay-qr.png" alt="支付宝收款二维码" />
@@ -433,7 +446,7 @@
         <div class="reveal">
           <p class="lead">拳皇 2012 安卓版的联机改造，目标是把它变成可以在线上对战、有排位、能持续更新的版本。</p>
           <p>单机再好，也不如和老对手隔着屏幕打一局。这个项目做的事情，就是把对局搬到线上，并且在能玩的基础上继续往里加内容。</p>
-          <p>众筹的钱只有两个去处：服务器和带宽，以及开发时间。达到一档就做一档，没到的档位不会提前画饼。</p>
+          <p>众筹的钱只有两个去处：服务器和带宽，以及软件开发成本。达到一档就做一档，没到的档位不会提前画饼。</p>
           <p>现在还在第一档之前，所以页面上所有档位都是未解锁状态——这是真实进度，没有美化。</p>
         </div>
         <div class="facts reveal">
@@ -458,7 +471,7 @@
       <div class="faq reveal">
         <details open>
           <summary>支持的钱会用在什么地方？</summary>
-          <p>全部用于服务器与带宽费用、以及开发投入。没有中间渠道，也没有实物成本，所以每一笔都直接变成项目进度。</p>
+          <p>全部用于服务器与带宽、以及软件开发投入。没有中间渠道，每一笔都会直接变成项目进度。</p>
         </details>
         <details>
           <summary>达到档位之后多久能看到东西？</summary>
@@ -470,7 +483,7 @@
         </details>
         <details>
           <summary>支持后可以退款吗？</summary>
-          <p>在对应档位开始开发前可以联系发起人退款；一旦该档位已经投入开发并发布，就不再支持退款。付款前请确认。</p>
+          <p>在对应档位开始开发前可以联系发起人退款；一旦该档位已经投入开发，就不再支持退款。付款前请确认。</p>
         </details>
         <details>
           <summary>这个项目和 SNK 有关系吗？</summary>
@@ -518,8 +531,8 @@
       index.html?raised=12500&backers=8
    ========================================================================= */
 const CONFIG = {
-  raised: 0,
-  backers: 0,
+  raised: 711,
+  backers: 16,
   updatedAt: "",
   contact: "QQ 群 1132095525",
   milestones: [
