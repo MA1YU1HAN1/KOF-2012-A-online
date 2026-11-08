@@ -290,7 +290,7 @@
           </div>
           <div class="ac-stats">
             <div class="ac-stat"><b id="backersNum">0</b><span>人已支持</span></div>
-            <div class="ac-stat"><b id="gapNum">—</b><span>距第一档</span></div>
+            <div class="ac-stat"><b id="gapNum">—</b><span id="gapLabel">距第一档</span></div>
             <div class="ac-stat"><b id="unlockNum">0 / 5</b><span>已解锁档位</span></div>
           </div>
           <p class="ac-note">
@@ -531,8 +531,8 @@
       index.html?raised=12500&backers=8
    ========================================================================= */
 const CONFIG = {
-  raised: 2351,
-  backers: 27,
+  raised: 3381,
+  backers: 31,
   updatedAt: "",
   contact: "QQ 群 1132095525",
   milestones: [
@@ -612,6 +612,7 @@ function renderHero(s) {
   animateNumber($("#backersNum"), s.backers, 1000, false);
   $("#pctNum").textContent = s.pct < 0.01 ? "0.00" : s.pct.toFixed(2);
   $("#gapNum").textContent = s.next ? "¥" + fmtInt(s.next.amount - s.raised) : "已全部解锁";
+  $("#gapLabel").textContent = s.next ? (s.unlocked > 0 ? "距下一档" : "距第一档") : "全部达成";
   $("#unlockNum").textContent = s.unlocked + " / " + CONFIG.milestones.length;
   $("#chipUnlock").textContent = s.unlocked + " / " + CONFIG.milestones.length;
   $("#factUnlock").textContent = s.unlocked + " / " + CONFIG.milestones.length;
